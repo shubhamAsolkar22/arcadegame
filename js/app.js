@@ -8,7 +8,9 @@ var Enemy = function (enemyRowIndex) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.rowIndex = enemyRowIndex;
-    this.x = -20;
+    this.width = 60;
+    this.height = 50;
+    this.x = -90;
     this.y = 53 + enemyRowIndex * 83;
     this.speed = Math.floor(Math.random() * MAX_ENEMY_SPEED) + 10;
     this.sprite = 'images/enemy-bug.png';
@@ -21,11 +23,12 @@ Enemy.prototype.update = function (dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x > 505) {
-        this.x = -20;
+        this.x = -90;
         this.speed = Math.floor(Math.random() * MAX_ENEMY_SPEED) + 10;
     }
-    else
+    else {
         this.x = (this.x + this.speed * dt);
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -38,12 +41,20 @@ Enemy.prototype.render = function () {
 // a handleInput() method.
 class Player {
     constructor() {
+        this.width = 80;
+        this.height = 50;
         this.x = 202;
         this.y = 404;
         this.sprite = 'images/char-boy.png';
     }
 
     update(dt) {
+
+    }
+
+    reCenter(){
+        this.x = 202;
+        this.y = 404;
     }
 
     render() {
@@ -72,7 +83,7 @@ let e12 = new Enemy(2);
 let e00 = new Enemy(0);
 let e01 = new Enemy(1);
 let e02 = new Enemy(2);
-let allEnemies = [e00, e01, e02,e10,e11/* ,e12 */];
+let allEnemies = [e00, e01 , e02, e10, e11, e12 ];
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -92,3 +103,10 @@ document.addEventListener('keydown', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+/* const playAgain = document.querySelector('#play-again');
+playAgain.addEventListener('click', function() {
+    document.querySelector('#myModal').style.display = 'none';
+    player.reCenter();
+}); */

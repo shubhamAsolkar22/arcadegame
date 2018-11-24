@@ -78,10 +78,25 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
+        if(player.y == -11){
+            //document.querySelector('.modal').style.display = 'block';
+        }
         updateEntities(dt);
-        // checkCollisions();
-    }
+        for(enemy of allEnemies)
+            if(checkCollisions(enemy,player)){
+                player.reCenter();
+            }
 
+    }
+    
+    function checkCollisions(enemy,player){
+        if (enemy.x < player.x + player.width &&
+            enemy.x + enemy.width > player.x &&
+            enemy.y < player.y + player.height &&
+            enemy.y + enemy.height > player.y) 
+            {console.log(player,enemy);return true;}
+        return false;
+    }
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
      * their update() methods. It will then call the update function for your
@@ -183,3 +198,5 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
+
+

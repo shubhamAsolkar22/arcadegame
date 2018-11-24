@@ -1,9 +1,5 @@
-body {
-    text-align: center;
-}
-
-/*********css for modal *******/
-.modal {
+<style>
+    .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -58,3 +54,17 @@ body {
 #play-again:focus{
     box-shadow: 10px 10px 57px -43px rgba(116,116,122,1);
 }
+</style>
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        
+        <div class="modal-body">
+            <h1>Congratulations !!</h1>
+            <h3 class="game-summary"></h3>
+            <button type="button" id="play-again">Play Again !</button>
+        </div>
+    </div>
+
+</div>
