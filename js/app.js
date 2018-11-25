@@ -1,4 +1,5 @@
 const MAX_ENEMY_SPEED = 300;
+const WINNING_Y_POSITION = -11;
 
 // Enemies our player must avoid
 var Enemy = function (enemyRowIndex) {
@@ -105,8 +106,10 @@ document.addEventListener('keydown', function (e) {
 });
 
 
+
 /* const playAgain = document.querySelector('#play-again');
 playAgain.addEventListener('click', function() {
     document.querySelector('#myModal').style.display = 'none';
     player.reCenter();
 }); */
+
